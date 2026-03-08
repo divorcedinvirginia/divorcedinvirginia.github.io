@@ -48,6 +48,8 @@ Fault grounds can impact alimony and property division, but they also require ad
 
 To file for divorce in Virginia, at least one spouse must have been a **bona fide resident and domiciliary of Virginia for at least 6 months** before filing. The divorce may be filed in the circuit court of the county or city where either spouse resides.
 
+[See the full Residency Requirements guide &rarr;](/residency-requirements/)
+
 ---
 
 ## Types of Divorce {#types-of-divorce}
@@ -60,6 +62,8 @@ Spouses cannot agree on one or more issues. The court decides unresolved matters
 
 ### Divorce from Bed and Board (Limited Divorce)
 A legal separation that does not fully dissolve the marriage but establishes separate living arrangements and can address support and custody. Rarely used today.
+
+[See the full Types of Divorce guide &rarr;](/types-of-divorce/)
 
 ---
 
