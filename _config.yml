@@ -1,9 +1,7 @@
-title: Divorced in Virginia
-description: A practical guide to divorce in Virginia
 email: divorcedinvirginia@gmail.com
 
 # Build settings
-theme: minima
+theme: slate
 plugins:
   - jekyll-feed
 
