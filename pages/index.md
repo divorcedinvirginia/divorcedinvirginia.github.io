@@ -127,6 +127,8 @@ Virginia uses **guidelines-based child support** under Virginia Code § 20-108.2
 - Support typically continues until the child turns **18** (or 19 if still in high school)
 - Either parent can seek modification if there is a material change in circumstances
 
+[See the full Child Support guide &rarr;](/child-support/)
+
 ---
 
 ## Property Division (Equitable Distribution) {#property-division}
