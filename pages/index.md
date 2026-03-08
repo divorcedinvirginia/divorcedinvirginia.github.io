@@ -81,6 +81,8 @@ A legal separation that does not fully dissolve the marriage but establishes sep
 8. **Negotiation / Mediation** — Many issues are resolved through negotiation or court-ordered mediation
 9. **Final Decree** — If uncontested, a judge may grant the divorce on paper. If contested, a trial is held and the judge issues a final order
 
+[See the full Divorce Process guide &rarr;](/divorce-process/)
+
 ---
 
 ## Child Custody and Visitation {#child-custody-and-visitation}
