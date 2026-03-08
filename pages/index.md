@@ -107,6 +107,8 @@ Virginia courts decide custody based on the **best interests of the child** unde
 
 Virginia strongly encourages co-parenting and parenting plans that keep both parents involved in the child's life.
 
+[See the full Child Custody and Visitation guide &rarr;](/child-custody/)
+
 ---
 
 ## Child Support {#child-support}
