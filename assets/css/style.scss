@@ -1,0 +1,37 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Darker text overrides */
+body {
+  color: #222;
+  text-shadow: none;
+}
+
+p {
+  font-weight: 400;
+  color: #222;
+}
+
+ul li,
+ol li {
+  color: #222;
+}
+
+dl dt,
+dl dd {
+  color: #222;
+}
+
+td, th {
+  color: #222;
+}
+
+blockquote {
+  color: #333;
+}
+
+footer {
+  color: #555;
+}
