@@ -150,6 +150,8 @@ Virginia follows the **equitable distribution** model under Virginia Code § 20-
 
 Common marital assets subject to division include the family home, retirement accounts (401k, pension, IRA), bank accounts, investment accounts, and businesses.
 
+[See the full Property Division guide &rarr;](/property-division/)
+
 ---
 
 ## Spousal Support (Alimony) {#spousal-support}
