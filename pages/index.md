@@ -205,6 +205,8 @@ While Virginia allows individuals to represent themselves (*pro se*), divorce in
 
 Many attorneys offer initial consultations. Legal aid organizations may also be able to assist those who qualify based on income.
 
+[See the full Legal Representation guide &rarr;](/legal-representation/)
+
 ---
 
 *This page is for general informational purposes only and does not constitute legal advice. Laws change and individual circumstances vary. Consult a qualified Virginia family law attorney for advice specific to your situation.*
