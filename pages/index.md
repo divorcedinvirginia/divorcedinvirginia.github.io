@@ -173,6 +173,8 @@ Virginia courts may award **spousal support** under Virginia Code § 20-107.1. T
 
 Spousal support typically ends upon the recipient's remarriage or cohabitation with a new partner in a marriage-like relationship.
 
+[See the full Spousal Support guide &rarr;](/spousal-support/)
+
 ---
 
 ## Separation Agreements {#separation-agreements}
