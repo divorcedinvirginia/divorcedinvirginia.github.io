@@ -189,6 +189,8 @@ A **Property Settlement Agreement (PSA)** or **Separation Agreement** is a legal
 
 A well-drafted agreement, signed by both parties and acknowledged before a notary, can be incorporated into the final divorce decree and become a court order.
 
+[See the full Separation Agreements guide &rarr;](/separation-agreements/)
+
 ---
 
 ## Legal Representation {#legal-representation}
