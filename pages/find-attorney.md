@@ -149,19 +149,16 @@ For more guidance on selecting an attorney, see our full page on [Legal Represen
     document.getElementById('zip-display').textContent = zip;
 
     document.getElementById('link-avvo').href =
-      'https://www.avvo.com/find-a-lawyer/va/family-lawyer?zip=' + zip;
+      'https://www.avvo.com/find-a-lawyer/va' + zip;
 
     document.getElementById('link-findlaw').href =
       'https://lawyers.findlaw.com/lawyer/practice/family-law?zip=' + zip + '&state=VA';
-
-    document.getElementById('link-martindale').href =
-      'https://www.martindale.com/find-attorneys/family-law-attorneys/?zip=' + zip;
 
     document.getElementById('link-superlawyers').href =
       'https://www.superlawyers.com/virginia/family-law/?zip=' + zip;
 
     document.getElementById('link-vsb').href =
-      'https://www.vsb.org/site/members/search?zip=' + zip;
+      'https://vsb.org/Site/Shared_Content/Directory/va-lawyer-directory.aspx' + zip;
 
     document.getElementById('directory-links').style.display = 'block';
     document.getElementById('directory-links').scrollIntoView({ behavior: 'smooth', block: 'start' });
