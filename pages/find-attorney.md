@@ -29,11 +29,6 @@ Enter your zip code to search Virginia family law attorneys in your area across 
       </a>
     </li>
     <li>
-      <a id="link-martindale" href="#" target="_blank" rel="noopener">
-        <strong>Martindale-Hubbell</strong> — Established directory with peer review ratings
-      </a>
-    </li>
-    <li>
       <a id="link-superlawyers" href="#" target="_blank" rel="noopener">
         <strong>Super Lawyers</strong> — Attorneys selected through peer nomination and review
       </a>
