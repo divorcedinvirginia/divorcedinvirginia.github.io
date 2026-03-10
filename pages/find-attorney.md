@@ -49,7 +49,7 @@ Attorney directories are a starting point, not a final answer. A listing in any 
 
 **Use the VSB directory to verify, not discover.** The Virginia State Bar member search is the authoritative source for confirming that an attorney is licensed in Virginia and checking whether they have any public disciplinary history. Always verify an attorney's VSB status before hiring, regardless of how you found them.
 
-**Ratings reflect different things.** Avvo ratings are algorithm-based and factor in years of experience, disciplinary records, and professional activity. Martindale peer review ratings reflect opinions of other attorneys. Super Lawyers selections are based on peer nominations and independent research. No rating system is a guarantee of quality or fit for your specific situation.
+**Ratings reflect different things.** Avvo ratings are algorithm-based and factor in years of experience, disciplinary records, and professional activity. Super Lawyers selections are based on peer nominations and independent research. No rating system is a guarantee of quality or fit for your specific situation.
 
 **Read the reviews critically.** Client reviews on attorney directories can be useful for understanding communication style and client experience, but they are self-selected and unverified. A pattern of reviews describing the same specific issue — poor communication, unexpected billing, missed deadlines — is more meaningful than any individual review.
 
