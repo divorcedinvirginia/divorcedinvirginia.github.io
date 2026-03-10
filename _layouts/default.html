@@ -46,84 +46,48 @@
           border-bottom: 1px solid #444;
         }
       }
-      .page-body {
-        display: flex;
-        align-items: flex-start;
-        gap: 2rem;
-      }
-      .main-content-col {
-        flex: 1;
-        min-width: 0;
-      }
-      .sidebar-col {
-        width: 220px;
-        flex-shrink: 0;
-        position: sticky;
-        top: 1.5rem;
-      }
       .email-signup {
-        padding: 1.25rem;
+        margin: 2.5rem 0 1.5rem;
+        padding: 1.5rem 1.75rem;
         background: #f5f5f5;
         border-top: 3px solid #333;
       }
       .email-signup h3 {
         margin: 0 0 0.4rem;
-        font-size: 0.95rem;
+        font-size: 1rem;
         color: #222;
       }
       .email-signup p {
-        margin: 0 0 0.85rem;
-        font-size: 0.82rem;
+        margin: 0 0 1rem;
+        font-size: 0.9rem;
         color: #555;
-        line-height: 1.4;
       }
       .signup-row {
         display: flex;
-        flex-direction: column;
         gap: 0.5rem;
+        flex-wrap: wrap;
       }
       .signup-row input[type="email"] {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 0.5rem 0.6rem;
-        font-size: 0.85rem;
+        flex: 1;
+        min-width: 200px;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
         border: 1px solid #ccc;
         border-radius: 3px;
         color: #222;
       }
       .signup-row button {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.85rem;
+        padding: 0.5rem 1.25rem;
+        font-size: 0.9rem;
         background: #333;
         color: #fff;
         border: none;
         border-radius: 3px;
         cursor: pointer;
-        width: 100%;
+        white-space: nowrap;
       }
       .signup-row button:hover {
         background: #555;
-      }
-      @media (max-width: 780px) {
-        .page-body {
-          flex-direction: column;
-        }
-        .sidebar-col {
-          width: 100%;
-          position: static;
-        }
-        .signup-row {
-          flex-direction: row;
-          flex-wrap: wrap;
-        }
-        .signup-row input[type="email"] {
-          flex: 1;
-          min-width: 180px;
-          width: auto;
-        }
-        .signup-row button {
-          width: auto;
-        }
       }
     </style>
     <!--[if lt IE 9]>
@@ -170,32 +134,27 @@
         </header>
         <hr>
 
-        <div class="page-body">
-          <div class="main-content-col">
-            <section id="main_content">
-              {{ content }}
-            </section>
-            <footer>
-              &copy; {{ 'now' | date: "%Y" }} {{ site.title }}. For informational purposes only &mdash; not legal advice.
-            </footer>
-          </div>
+        <section id="main_content">
+          {{ content }}
+        </section>
 
-          <aside class="sidebar-col">
-            <div class="email-signup">
-              <h3>Stay Informed</h3>
-              <p>Get new articles delivered to your inbox. No spam &mdash; just practical information about Virginia divorce law.</p>
-              <form action="https://formsubmit.co/divorcedinvirginia@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="New subscriber – Divorced in Virginia">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://divorcedinvirginia.github.io/thank-you/">
-                <div class="signup-row">
-                  <input type="email" name="email" placeholder="Your email address" required>
-                  <button type="submit">Subscribe</button>
-                </div>
-              </form>
+        <div class="email-signup">
+          <h3>Stay Informed</h3>
+          <p>Get new articles delivered to your inbox. No spam &mdash; just practical information about Virginia divorce law.</p>
+          <form action="https://formsubmit.co/divorcedinvirginia@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New subscriber – Divorced in Virginia">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://divorcedinvirginia.github.io/thank-you/">
+            <div class="signup-row">
+              <input type="email" name="email" placeholder="Your email address" required>
+              <button type="submit">Subscribe</button>
             </div>
-          </aside>
+          </form>
         </div>
+
+        <footer>
+          &copy; {{ 'now' | date: "%Y" }} {{ site.title }}. For informational purposes only &mdash; not legal advice.
+        </footer>
 
       </div>
     </div>
