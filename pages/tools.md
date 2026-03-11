@@ -64,6 +64,48 @@ This calculator estimates monthly child support under Virginia's Child Support G
 
 ---
 
+## Virginia Spousal Support Estimator
+
+Virginia has no statutory formula for spousal support — courts weigh 13 factors under Va. Code § 20-107.1. However, many Virginia circuit courts apply an informal formula at the **pendente lite** (temporary support) stage when there is not time for a full factor analysis. The most widely referenced is the Fairfax formula: **28% of the higher earner's gross monthly income minus 58% of the lower earner's gross monthly income.**
+
+This calculator applies that formula and provides a rough duration estimate based on observed judicial patterns. Both figures are starting points only — actual awards vary significantly by judge, jurisdiction, and the facts of the case.
+
+<div class="tool-card">
+  <h3 class="tool-title">Spousal Support Estimator</h3>
+
+  <div class="input-grid">
+    <div class="input-group">
+      <label for="ss-income1">Spouse 1 — Gross Monthly Income</label>
+      <div class="input-prefix-wrap">
+        <span class="prefix">$</span>
+        <input type="number" id="ss-income1" min="0" step="1" placeholder="0">
+      </div>
+    </div>
+    <div class="input-group">
+      <label for="ss-income2">Spouse 2 — Gross Monthly Income</label>
+      <div class="input-prefix-wrap">
+        <span class="prefix">$</span>
+        <input type="number" id="ss-income2" min="0" step="1" placeholder="0">
+      </div>
+    </div>
+    <div class="input-group">
+      <label for="ss-marriage-years">Length of Marriage (years)</label>
+      <input type="number" id="ss-marriage-years" min="0" step="1" placeholder="e.g. 12">
+    </div>
+    <div class="input-group"></div>
+  </div>
+
+  <button class="calc-btn" onclick="calculateSpousalSupport()">Calculate</button>
+
+  <div id="ss-result" class="result" style="display:none;"></div>
+</div>
+
+<div class="tool-disclaimer">
+  <strong>Important limitations.</strong> Virginia has no statutory spousal support formula. This calculator applies the informal Fairfax pendente lite formula (28%/58%) as a rough reference point. It does not account for the 13 statutory factors under Va. Code § 20-107.1, the marital standard of living, actual needs and expenses, fault grounds (including adultery, which bars support), property division, or other case-specific circumstances. A spouse who committed adultery is generally barred from receiving spousal support under Virginia law. Duration estimates reflect general judicial patterns and are not binding. This tool is for general informational purposes only and is not legal advice. Consult a licensed Virginia family law attorney for guidance specific to your situation.
+</div>
+
+---
+
 *More tools coming soon.*
 
 <style>
@@ -360,6 +402,87 @@ This calculator estimates monthly child support under Virginia's Child Support G
       html += '<tr><td>Custodial parent</td><td>Parent ' + custodialParent + ' (' + (custodialParent === 1 ? days1 : days2) + ' days)</td></tr>';
       html += '<tr><td>Noncustodial parent days</td><td>' + noncustodialDays + ' days/year</td></tr>';
       html += '<tr><td><strong>Monthly support obligation</strong></td><td><strong>' + fmt(support) + '</strong></td></tr>';
+      html += '</table>';
+    }
+
+    resultEl.style.display = 'block';
+    resultEl.innerHTML = html;
+  }
+
+  // ── Spousal Support Calculator ──────────────────────────────────────────────
+
+  function calculateSpousalSupport() {
+    var income1 = parseFloat(document.getElementById('ss-income1').value) || 0;
+    var income2 = parseFloat(document.getElementById('ss-income2').value) || 0;
+    var marriageYears = parseFloat(document.getElementById('ss-marriage-years').value);
+
+    var resultEl = document.getElementById('ss-result');
+
+    if (income1 <= 0 && income2 <= 0) {
+      resultEl.style.display = 'block';
+      resultEl.innerHTML = '<p style="color:#b00;margin:0;">Please enter at least one spouse\'s income.</p>';
+      return;
+    }
+
+    if (income1 === income2) {
+      resultEl.style.display = 'block';
+      resultEl.innerHTML = '<div class="result-headline">$0 / month</div><div class="result-sub">Incomes are equal — no support indicated by this formula.</div>';
+      return;
+    }
+
+    // Identify payor (higher earner) and payee (lower earner)
+    var payorIncome = Math.max(income1, income2);
+    var payeeIncome = Math.min(income1, income2);
+    var payorLabel = income1 > income2 ? 'Spouse 1' : 'Spouse 2';
+    var payeeLabel = income1 > income2 ? 'Spouse 2' : 'Spouse 1';
+
+    // Fairfax formula: 28% of payor's gross − 58% of payee's gross
+    var support = (payorIncome * 0.28) - (payeeIncome * 0.58);
+
+    var html = '';
+
+    if (support <= 0) {
+      html += '<div class="result-headline">$0 / month</div>';
+      html += '<div class="result-sub">The formula produces no support obligation at these income levels.</div>';
+      html += '<table class="result-table">';
+      html += '<tr><td>' + payorLabel + ' gross monthly income (payor)</td><td>' + fmt(payorIncome) + '</td></tr>';
+      html += '<tr><td>' + payeeLabel + ' gross monthly income (payee)</td><td>' + fmt(payeeIncome) + '</td></tr>';
+      html += '<tr><td>28% of payor income</td><td>' + fmt(payorIncome * 0.28) + '</td></tr>';
+      html += '<tr><td>58% of payee income</td><td>' + fmt(payeeIncome * 0.58) + '</td></tr>';
+      html += '<tr><td><strong>Estimated monthly support</strong></td><td><strong>$0</strong></td></tr>';
+      html += '</table>';
+    } else {
+      html += '<div class="result-headline">' + fmt(support) + ' / month</div>';
+      html += '<div class="result-sub">' + payorLabel + ' pays ' + payeeLabel + '</div>';
+      html += '<table class="result-table">';
+      html += '<tr><td>' + payorLabel + ' gross monthly income (payor)</td><td>' + fmt(payorIncome) + '</td></tr>';
+      html += '<tr><td>' + payeeLabel + ' gross monthly income (payee)</td><td>' + fmt(payeeIncome) + '</td></tr>';
+      html += '<tr><td>28% of payor income</td><td>' + fmt(payorIncome * 0.28) + '</td></tr>';
+      html += '<tr><td>58% of payee income</td><td>' + fmt(payeeIncome * 0.58) + '</td></tr>';
+      html += '<tr><td><strong>Estimated monthly support</strong></td><td><strong>' + fmt(support) + '</strong></td></tr>';
+
+      // Duration estimate if marriage length provided
+      if (!isNaN(marriageYears) && marriageYears > 0) {
+        var durationText;
+        if (marriageYears < 5) {
+          var low = Math.max(1, Math.round(marriageYears * 0.4));
+          var high = Math.max(2, Math.round(marriageYears * 0.6));
+          durationText = low + '–' + high + ' years (short-term marriage)';
+        } else if (marriageYears < 10) {
+          var low = Math.round(marriageYears * 0.35);
+          var high = Math.round(marriageYears * 0.5);
+          durationText = low + '–' + high + ' years';
+        } else if (marriageYears < 20) {
+          var low = Math.round(marriageYears * 0.4);
+          var high = Math.round(marriageYears * 0.6);
+          durationText = low + '–' + high + ' years';
+        } else {
+          durationText = 'Potentially indefinite (20+ year marriage)';
+        }
+        html += '<tr><td>Marriage length</td><td>' + marriageYears + ' years</td></tr>';
+        html += '<tr><td>Estimated duration range</td><td>' + durationText + '</td></tr>';
+      }
+
       html += '</table>';
     }
 
