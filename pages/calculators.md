@@ -77,8 +77,6 @@ This calculator first estimates spousal support using the Fairfax formula (28%/5
   <strong>Important limitations.</strong> Virginia has no statutory spousal support formula. The spousal support estimate uses the informal Fairfax pendente lite formula (28%/58%) as a rough reference point and does not account for the 13 statutory factors under Va. Code § 20-107.1, fault grounds (adultery bars support), the marital standard of living, actual needs and expenses, or property division. Child support does not include work-related childcare costs, health insurance premiums, or other routine adjustments. Duration estimates reflect general judicial patterns and are not binding. This tool is for general informational purposes only and is not legal advice. Consult a licensed Virginia family law attorney for guidance specific to your situation.
 </div>
 
-*More calculators coming soon.*
-
 <style>
   .tool-card {
     background: #f9f9f9;
