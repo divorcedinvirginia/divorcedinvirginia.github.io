@@ -36,6 +36,11 @@ footer {
   color: #555;
 }
 
+/* Remove nav bullet points */
+nav.site-nav ul li {
+  list-style: none;
+}
+
 /* Wider content on desktop */
 #container {
   max-width: 80%;
