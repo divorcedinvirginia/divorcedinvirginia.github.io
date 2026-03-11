@@ -19,12 +19,13 @@
       /* --- Left sidebar nav (desktop) --- */
       nav.site-nav {
         background: #333;
-        width: 180px;
-        min-width: 180px;
+        width: 220px;
+        min-width: 220px;
         flex-shrink: 0;
         position: fixed;
         top: 10%;
-        height: auto;
+        max-height: 80vh;
+        overflow-y: auto;
       }
       nav.site-nav ul {
         list-style: none;
@@ -59,7 +60,7 @@
       .page-content {
         flex: 1;
         min-width: 0;
-        margin-left: 180px;
+        margin-left: 220px;
       }
 
       /* --- Mobile: top bar --- */
