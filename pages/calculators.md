@@ -229,6 +229,8 @@ This calculator first estimates spousal support using the Fairfax formula (28%/5
     border-radius: 2px;
     margin-bottom: 0.6rem;
   }
+  .result-section-summary { background: #f0f0f0; }
+  .result-section-summary .result-section-title { color: #555; }
   .badge-ss   { background: #f0e8f5; color: #5a2a7a; }
   .badge-shared  { background: #e8f0e8; color: #2a5e2a; }
   .badge-primary { background: #e8eaf0; color: #2a3a5e; }
@@ -381,6 +383,8 @@ This calculator first estimates spousal support using the Fairfax formula (28%/5
     }
 
     // ── Step 3: Child support ────────────────────────────────────────────────
+    var csAmount = 0;
+    var csPayorIs1 = null; // true = spouse 1 pays child support
     var csHtml = '';
     if (nChildren > 0) {
       if (days1 > 0 && days2 <= 0) days2 = 365 - days1;
@@ -401,7 +405,9 @@ This calculator first estimates spousal support using the Fairfax formula (28%/5
         var ob1 = share1 * sharedNeed * custPct2;
         var ob2 = share2 * sharedNeed * custPct1;
         var net = Math.abs(ob1 - ob2);
-        var csPayorLabel = ob1 > ob2 ? 'Spouse 1 pays Spouse 2' : 'Spouse 2 pays Spouse 1';
+        csPayorIs1 = ob1 > ob2;
+        csAmount = net;
+        var csPayorLabel = csPayorIs1 ? 'Spouse 1 pays Spouse 2' : 'Spouse 2 pays Spouse 1';
 
         csHtml += '<span class="badge badge-shared">Shared Custody — Schedule B</span>';
         csHtml += '<div class="result-headline">' + fmt(net) + ' / month</div>';
@@ -424,6 +430,8 @@ This calculator first estimates spousal support using the Fairfax formula (28%/5
         var ncDays = custodialSpouse === 1 ? days2 : days1;
         var csLabel = 'Spouse ' + (custodialSpouse === 1 ? '2' : '1') + ' pays Spouse ' + custodialSpouse;
         var csSupport = basicObligation * ncShare;
+        csPayorIs1 = custodialSpouse === 2;
+        csAmount = csSupport;
 
         csHtml += '<span class="badge badge-primary">Primary Custody — Schedule A</span>';
         csHtml += '<div class="result-headline">' + fmt(csSupport) + ' / month</div>';
@@ -443,8 +451,51 @@ This calculator first estimates spousal support using the Fairfax formula (28%/5
       csHtml += '</div>';
     }
 
+    // ── Summary ───────────────────────────────────────────────────────────────
+    var summaryHtml = '';
+    var hasAnything = ssAmount > 0 || csAmount > 0;
+    if (hasAnything) {
+      // Net obligation from Spouse 1's perspective (positive = pays, negative = receives)
+      var net1 = 0;
+      if (ssAmount > 0) net1 += ssPayorIs1 ? ssAmount : -ssAmount;
+      if (csAmount > 0 && csPayorIs1 !== null) net1 += csPayorIs1 ? csAmount : -csAmount;
+      var net2 = -net1;
+
+      summaryHtml += '<div class="result-section result-section-summary">';
+      summaryHtml += '<div class="result-section-title">Total Monthly Support Obligation</div>';
+      summaryHtml += '<table class="result-table">';
+
+      if (ssAmount > 0) {
+        summaryHtml += '<tr><td>Spousal support (' + (ssPayorIs1 ? 'Spouse 1 → Spouse 2' : 'Spouse 2 → Spouse 1') + ')</td><td>' + fmt(ssAmount) + '</td></tr>';
+      }
+      if (csAmount > 0) {
+        summaryHtml += '<tr><td>Child support (' + (csPayorIs1 ? 'Spouse 1 → Spouse 2' : 'Spouse 2 → Spouse 1') + ')</td><td>' + fmt(csAmount) + '</td></tr>';
+      }
+
+      summaryHtml += '<tr class="highlight"><td><strong>Spouse 1 net monthly obligation</strong></td>';
+      if (net1 > 0) {
+        summaryHtml += '<td><strong>' + fmt(net1) + ' paid out</strong></td></tr>';
+      } else if (net1 < 0) {
+        summaryHtml += '<td><strong>' + fmt(-net1) + ' received</strong></td></tr>';
+      } else {
+        summaryHtml += '<td><strong>$0</strong></td></tr>';
+      }
+
+      summaryHtml += '<tr class="highlight"><td><strong>Spouse 2 net monthly obligation</strong></td>';
+      if (net2 > 0) {
+        summaryHtml += '<td><strong>' + fmt(net2) + ' paid out</strong></td></tr>';
+      } else if (net2 < 0) {
+        summaryHtml += '<td><strong>' + fmt(-net2) + ' received</strong></td></tr>';
+      } else {
+        summaryHtml += '<td><strong>$0</strong></td></tr>';
+      }
+
+      summaryHtml += '</table>';
+      summaryHtml += '</div>';
+    }
+
     resultEl.style.display = 'block';
-    resultEl.innerHTML = ssHtml + adjHtml + csHtml;
+    resultEl.innerHTML = ssHtml + adjHtml + csHtml + summaryHtml;
   }
 
   // Show/hide custody days fields based on children selection
